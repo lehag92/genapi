@@ -3,6 +3,7 @@
 namespace app\modules\rest\models;
 
 use Yii;
+use app\modules\rest\models\Phone;
 
 /**
  * This is the model class for table "users".
@@ -10,6 +11,8 @@ use Yii;
  * @property integer $id
  * @property string $firstName
  * @property string $lastName
+ *
+ * @property Phones[] $phones
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -41,5 +44,13 @@ class User extends \yii\db\ActiveRecord
             'firstName' => 'First Name',
             'lastName' => 'Last Name',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPhones()
+    {
+        return $this->hasMany(Phone::className(), ['user_id' => 'id']);
     }
 }

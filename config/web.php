@@ -43,12 +43,16 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/rest/view'=>'/rest/user/index',
             ],
         ],
     ],
     'modules' => [
         'rest' => [
             'class' => 'app\modules\rest\Module',
+        ],
+        'crud' => [
+            'class' => 'app\modules\crud\Module',
         ],
     ],
     'params' => $params,
