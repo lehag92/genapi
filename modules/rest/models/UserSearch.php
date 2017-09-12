@@ -44,7 +44,6 @@ class UserSearch extends User
     public function search($params)
     {
         $query = User::find();
-      //  $query->joinWith(['phones']);
 
         // add conditions that should always apply here
 
@@ -70,13 +69,10 @@ class UserSearch extends User
         $query->andFilterWhere([
             'id' => $this->id,
         ]);
-//echo '<pre>';
-//var_dump($query);
-//die();
+
         $query->andFilterWhere(['like', 'firstName', $this->firstName])
             ->andFilterWhere(['like', 'lastName', $this->lastName])
-         //   ->            andFilterWhere(['like', 'phones.phone', $this->phones])
-        ;;
+        ;
         $query->joinWith(['phones' => function ($query) {
             $query->from(['phones' => Phone::tableName()]);
         }]);
